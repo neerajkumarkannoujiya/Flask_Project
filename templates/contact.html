@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>Contact us</h1>
+	<p>Have a question? Send us a message.</p>
+
+	<p>Email: <a href="mailto:hello@example.com">hello@example.com</a></p>
+	<p>Phone: <a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+
+	<form method="post">
+		<p>
+			<label for="name">Name</label><br>
+			<input id="name" name="name" type="text" required>
+		</p>
+		<p>
+			<label for="email">Email</label><br>
+			<input id="email" name="email" type="email" required>
+		</p>
+		<p>
+			<label for="subject">Subject</label><br>
+			<input id="subject" name="subject" type="text" required>
+		</p>
+		<p>
+			<label for="message">Message</label><br>
+			<textarea id="message" name="message" required></textarea>
+		</p>
+		<button type="submit">Send message</button>
+	</form>
+{% endblock %}
