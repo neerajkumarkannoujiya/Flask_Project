@@ -5,10 +5,15 @@
 </head>
 <body>
 	<header>
-		<h1>Welcome to Flask Learning</h1>
+		<h1>Welcome to Flask Learning, {{name | upper}}</h1>
+		<h1>Welcome to Flask Learning, {{name | lower}}</h1>
 	</header>
 	<main>
 		<p>Your Flask application is ready.</p>
+		<p>Age: {{age}}</p>
+		<p>Address: {{address}}</p>
 	</main>
+
+	<p>{# Current Age: {{age+2}} #}</p>
 </body>
 </html>
