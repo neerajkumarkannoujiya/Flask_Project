@@ -4,16 +4,43 @@
 	<title>Flask Learning</title>
 </head>
 <body>
-	<header>
-		<h1>Welcome to Flask Learning, {{name | upper}}</h1>
-		<h1>Welcome to Flask Learning, {{name | lower}}</h1>
-	</header>
-	<main>
-		<p>Your Flask application is ready.</p>
-		<p>Age: {{age}}</p>
-		<p>Address: {{address}}</p>
-	</main>
 
-	<p>{# Current Age: {{age+2}} #}</p>
+	{% if is_logged_in %}
+	
+	<h1>Welcome to Flask Learning</h1>
+
+	Your Marks : {{marks}}
+
+	{% for i in subject %}
+	<ol>
+		{{loop.index}}. {{i}}
+	</ol>
+
+	{% endfor %}
+
+	{% if marks>90 %}
+	<h1>Excellent!!</h1>
+
+	{% elif marks>80 %}
+	<h1>Good!!</h1>
+
+	{% elif marks>50 %}
+	<h1>Average!!</h1>
+
+	{% else %}
+	<h1>Poor!!</h1>
+
+	{% endif %}
+
+	{% else %}
+
+	<h1>Please Login!!</h1>
+
+	{% endif %}
+
+
+
+	
+	
 </body>
 </html>
