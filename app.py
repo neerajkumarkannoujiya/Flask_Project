@@ -1,8 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask, flash, render_template, request
 
 
 app = Flask(__name__)
-
+app.secret_key = "supersecretkey"
 
 @app.route("/")
 def home():
@@ -16,9 +16,27 @@ def home():
 def about():
     return render_template("about.html")
 
-@app.route("/contact")
+
+# @app.route("/search")
+# def search():
+#     query = request.args.get("query")
+#     return f"you are searching for : {query}"
+
+@app.route("/contact", methods=["GET", "POST"])
 def contact():
-    return render_template("contact.html")
+    if request.method == "POST":
+        name = request.form.get("name")
+        email = request.form.get("email").strip()
+        age = request.form.get("age").strip()
+        if not name:
+            return "Name not provided"
+        if not email:
+            return "Email not provided"
+        if not age.isdigit():
+            return "Invalid age provided"
+        
+        flash("Registration Successful!!!!")
+    return render_template("contact.html",name=name, email=email, age=age)
 
 if __name__ == "__main__":
     app.run(debug=True)
