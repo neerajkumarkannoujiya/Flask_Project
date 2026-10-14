@@ -1,8 +1,36 @@
-from flask import Flask, flash, render_template, request
+from flask import Flask, flash, render_template, request, redirect, url_for, session
 
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
+
+
+@app.route("/login")
+def login():
+    session["user"] = "Neeraj"
+    return "Login Successfull!!1"
+
+
+@app.route("/dashboard")
+def dashboard():
+    user = session.get("user")
+    if not user:
+        return "Login First!!"
+    
+    return f"Welcome here, {user}";
+
+
+@app.route("/logout")
+def logout():
+    session.pop("user",None)
+    return "You Are Logged Out"
+    
+    
+
+
+
+
+
 
 @app.route("/")
 def home():
