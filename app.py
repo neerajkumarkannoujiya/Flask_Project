@@ -17,7 +17,7 @@ def dashboard():
     if not user:
         return "Login First!!"
     
-    return f"Welcome here, {user}";
+    return f"Welcome here, {user}"
 
 
 @app.route("/logout")
